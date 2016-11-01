@@ -6,7 +6,7 @@ function [Accuracy Sensitivity Specificity Category] = SVM_2group(Subjects_Data,
 %           n is the number of features
 %
 % Subject_Label:
-%           array of 0 or 1
+%           array of -1 or 1
 %
 % Pre_Method:
 %           'Normalize' or 'Scale'
