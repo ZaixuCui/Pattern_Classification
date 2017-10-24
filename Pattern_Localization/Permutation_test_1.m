@@ -14,6 +14,8 @@ function Permutation_test_1(OriginBrain, RandBrainCell, P_Threshold)
 %         vector of p threshold
 %         such as [ 0.05 0.01 ] 
 %
+% If the memory is not enough to run this program, please using Permutation_test_2 function
+%
 
 OriginValue = load(OriginBrain);
 RandQuantity = length(RandBrainCell);
