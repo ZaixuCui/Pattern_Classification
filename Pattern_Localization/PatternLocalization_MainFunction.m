@@ -29,4 +29,4 @@ disp('display w distribution in random state:');
 W_Distribution(Rand_w_Brain_Cell, 50, ResultantFolder);
 
 disp('Permutation test for w Brain:');
-Permutation_test(Origin_w_Brain, Rand_w_Brain_Cell, 0.05);
+Permutation_test_1(Origin_w_Brain, Rand_w_Brain_Cell, 0.05);
