@@ -1,4 +1,4 @@
-function [Accuracy Sensitivity Specificity Category] = SVM_2group(Subjects_Data, Subjects_Label, Pre_Method, ResultantFolder)
+function [Accuracy Sensitivity Specificity Category] = SVM_2group(Subjects_Data, Subjects_Label, Pre_Method, ResultantFolder, Permutation_Flag)
 %
 % Subject_Data:
 %           m*n matrix
@@ -13,6 +13,9 @@ function [Accuracy Sensitivity Specificity Category] = SVM_2group(Subjects_Data,
 %
 % ResultantFolder:
 %           the path of folder storing resultant files
+%
+% Permutation_Flag:
+%           0 or 1; if 1, doing permutation, that is randomizing the subjects' label and then classifying the two groups
 %
 
 if nargin >= 4
@@ -35,6 +38,11 @@ for i = 1:Subjects_Quantity
     test_label = Training_all_Label(i);
     Training_all_data(i, :) = [];
     Training_all_Label(i) = [];
+    
+    if Permutation_Flag
+        Rand_ID = randperm(length(Training_all_Label));
+        Training_all_Label = Training_all_Label(Rand_ID);
+    end
 
     if strcmp(Pre_Method, 'Normalize')
         %Normalizing
