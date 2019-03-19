@@ -6,3 +6,6 @@ Citing our related paper will be greatly appreciated if you use these codes.
 
 Copyright (c) Zaixu Cui, State Key Laboratory of Cognitive Neuroscience and Learning, Beijing Normal University.  
 Contact information: zaixucui@gmail.com
+
+SVM was implemented using LIBSVM (https://www.csie.ntu.edu.tw/~cjlin/libsvm/).
+Dowload it and compile the matlab version in MATLAB. Just run make.m file to compile.
