@@ -1,4 +1,4 @@
-function [Accuracy, Sensitivity, Specificity] = SVM_2group_10Folder(Subjects_Data, Subjects_Label, Pre_Method, ResultantFolder)
+function [Accuracy, Sensitivity, Specificity] = SVM_2group_NFolds(Subjects_Data, Subjects_Label, Fold_Quantity, Pre_Method, ResultantFolder)
 %
 % Subject_Data:
 %           m*n matrix
@@ -7,6 +7,9 @@ function [Accuracy, Sensitivity, Specificity] = SVM_2group_10Folder(Subjects_Dat
 %
 % Subject_Label:
 %           array of -1 or 1
+%
+% Fold_Quantity:
+%           number of folds
 %
 % Pre_Method:
 %           'Normalize' or 'Scale'
@@ -20,11 +23,11 @@ if ~exist(ResultantFolder, 'dir')
 end
 
 [Subjects_Quantity, Feature_Quantity] = size(Subjects_Data);
-[Splited_Data, Splited_Data_Label, Origin_ID_Cell] = Split_NFolds(Subjects_Data, Subjects_Label, 10);
+[Splited_Data, Splited_Data_Label, Origin_ID_Cell] = Split_NFolds(Subjects_Data, Subjects_Label, Fold_Quantity);
 
 predicted_labels = [];
 decision_values = [];
-for i = 1:10
+for i = 1:Fold_Quantity
     
     disp(['The ' num2str(i) ' iteration!']);
     
@@ -34,7 +37,7 @@ for i = 1:10
     
     Training_all_data = [];
     Label = [];
-    for j = 1:10
+    for j = 1:Fold_Quantity
         if j == i
             continue;
         end
