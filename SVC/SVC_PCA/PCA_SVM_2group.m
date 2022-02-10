@@ -104,7 +104,7 @@ for i = 1:Subjects_Quantity
     for j = 1 : model(i).totalSV
         w{i} = w{i} + model(i).sv_coef(j) * model(i).SVs(j, :);
     end
-    decision_values(i) = w{i} * test_data' + model(i).rho;
+    decision_values(i) = w{i} * test_data' - model(i).rho;
 %     decision_values(i) = w{i} * test_data';
     
 %     % Back w to brain
